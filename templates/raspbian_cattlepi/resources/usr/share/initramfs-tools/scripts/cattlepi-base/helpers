@@ -130,7 +130,7 @@ cattlepi_check_API_connectivity()
 {
     cattlepi_find_params
     if [ "${cattlepi_check_API_connectivity_invoked}" != "yes" ]; then
-        with_backoff curl -sSkI --connect-timeout 60 -m 90 --retry 1 --retry-max-time 10 $CATTLEPI_BASE/ping > /dev/null 2>&1
+        curl -sSkI --connect-timeout 60 -m 90 --retry 1 --retry-max-time 10 $CATTLEPI_BASE/ping > /dev/null 2>&1
         if [[ $? -ne 0 ]]; then
             API_CONNECTIVITY=false
         fi
